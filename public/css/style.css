@@ -1,0 +1,104 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.boxForca img{
+    height: 450px;
+    width: 400px;
+}
+.boxForca{
+    display: flex;
+    margin-top: 50px;
+    
+}
+.boxBtnEsc{
+    margin-top: 27px;
+    margin-left: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 338px;
+}
+.boxBtnEsc  h1{
+    font-size: 35px;
+}
+
+.boxBtnEsc button{
+    background-color: rgb(38, 175, 96);
+    border-radius: 10px;
+    border-style: none;
+
+    height: 50px;
+    width: 180px;
+
+    margin-left: 40%;
+
+    color: white;
+    font-size: 18px;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.btnList{
+    width: 800px;
+
+    margin-left: 8%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+    
+}
+.btnList button{
+    height: 50px;
+    width: 50px;
+
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 7px;
+
+    font-weight: 500;
+    font-size: large;
+    color: rgb(76, 112, 145);
+
+    background-color: rgb(224, 236, 243);
+
+    border-radius: 5px;
+    border-color: rgb(173, 203, 225);
+    border-style: solid;
+}
+
+.boxChute{
+    gap: 10px;
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60%;
+}
+.boxChute input{
+    font-size: larger;
+
+    border-style: solid;
+    border-radius: 5px;
+
+}
+.boxChute button{
+    height: 35px;
+    width: 70px;
+
+    border-radius: 5px;
+    border-color: rgb(173, 203, 225);
+    border-style: solid;
+
+    font-weight: 500;
+    font-size: medium;
+    color: rgb(76, 112, 145);
+
+    background-color: rgb(224, 236, 243);
+}
