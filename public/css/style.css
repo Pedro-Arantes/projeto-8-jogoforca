@@ -102,3 +102,10 @@ main{
 
     background-color: rgb(224, 236, 243);
 }
+
+#btnGrey{
+    color: rgba(0, 0, 0, 0.308);
+    
+    background-color: rgb(160, 170, 183);
+    border-style: none;
+}
