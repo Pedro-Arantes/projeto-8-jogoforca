@@ -6,6 +6,6 @@ export default function Btn({txt,clickLetter,index,teclas,habilita,status}){
     const  indexa = teclas[index]
     return(
         
-        <button disabled = {status === "fim " || status === "erro"? true: false} onClick={()=>clickLetter(index)} id={ teclas.includes(index) || habilita ? "btnGrey" : ""}>{txt}</button>
+        <button disabled = {status === "fim " || status === "erro" ? true: false} onClick={()=>clickLetter(index)} id={ teclas.includes(index) || habilita || status === "fim " || status === "erro" ? "btnGrey" : ""}>{txt}</button>
     )
 }

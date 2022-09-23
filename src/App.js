@@ -109,16 +109,18 @@ export default function App() {
             if (condicao === false || teste === palavra) {
 
                 if ( count === 0) {
-                    console.log("string vazia")
-                    console.log(count)
+                    //console.log("string vazia")
+                    //console.log(count)
                 } else if (erro === 6) {
-                    console.log("aqui")
+                    //console.log("aqui")
                     setStatus("erro")
+                    setHabilita(true);
                 } else {
-                    console.log("estou")
+                    //console.log("estou")
                     //setTecla([]);
                     //setErro(0);
                     setStatus("fim")
+                    setHabilita(true);
                 }
 
             }

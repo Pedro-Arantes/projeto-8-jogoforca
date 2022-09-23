@@ -49,7 +49,7 @@ export default function Jogo({ RandomWord, palavra, erro, word, valor }) {
             <img src={srcSituation()} alt="nada" />
             <div className="boxBtnEsc">
                 <button onClick={() => RandomWord()}>Escolher Palavra</button>
-                <h1 className={eFimDeJogo(valor)}>{erro > 6 || valor === "fim" ? word : palavra}</h1>
+                <h1 className={eFimDeJogo(valor)}>{erro > 6 || valor === "fim" || valor === "erro" ? word : palavra}</h1>
             </div>
         </div>
     )
