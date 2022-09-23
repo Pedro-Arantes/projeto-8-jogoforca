@@ -12,19 +12,19 @@ export default function Jogo({ RandomWord, palavra, erro, word, valor }) {
 
     const srcSituation = () => {
         switch (erro) {
-            case 1:
+            case 0:
                 return forca0
-            case 2:
+            case 1:
                 return forca1
-            case 3:
+            case 2:
                 return forca2
-            case 4:
+            case 3:
                 return forca3
-            case 5:
+            case 4:
                 return forca4
-            case 6:
+            case 5:
                 return forca5
-            case 7:
+            case 6:
                 return forca6
             default:
                 return forca6
@@ -33,9 +33,9 @@ export default function Jogo({ RandomWord, palavra, erro, word, valor }) {
     }
 
     const eFimDeJogo = (v) => {
-        if (v === "fim") {
+        if (v  === "fim") {
             return "tituloForcaAcerto"
-        } else if (erro > 6 || v === "erro") {
+        } else if (erro +1> 6 || v === "erro") {
             return "tituloForcaErro"
         } else {
             return "tituloForca"
@@ -49,7 +49,7 @@ export default function Jogo({ RandomWord, palavra, erro, word, valor }) {
             <img src={srcSituation()} alt="nada" />
             <div className="boxBtnEsc">
                 <button onClick={() => RandomWord()}>Escolher Palavra</button>
-                <h1 className={eFimDeJogo(valor)}>{erro > 6 || valor === "fim" || valor === "erro" ? word : palavra}</h1>
+                <h1 className={eFimDeJogo(valor)}>{erro+1 > 6 || valor === "fim" || valor === "erro" ? word : palavra}</h1>
             </div>
         </div>
     )

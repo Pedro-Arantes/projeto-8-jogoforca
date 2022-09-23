@@ -15,7 +15,7 @@ export default function App() {
 
     const [teclas, setTecla] = React.useState([]);
     const [count, setReset] = React.useState(0);
-    const [erro, setErro] = React.useState(1);
+    const [erro, setErro] = React.useState(0);
     const [chute, setChute] = React.useState("");
     
 
@@ -45,7 +45,7 @@ export default function App() {
             const x = count + 1
             setReset(x)
             setStatus("")
-            setErro(1);
+            setErro(0);
             //const interval = setInterval(fimDeJogo, 2000)
             //if (erro >= 6 || status === "fim") {
                 //clearInterval(interval)
@@ -63,7 +63,7 @@ export default function App() {
             const oculto = arrayOculto.map((item) => item + " ");
             setOculto(oculto)
             setTecla([]);
-            setErro(1);
+            setErro(0);
             
             setStatus("")
 
@@ -104,14 +104,14 @@ export default function App() {
             const string = palavraOculta.toString()
             const condicao = string.includes("_")
             console.log(erro)
-            const teste = erro >= 6 ? palavra : ""
+            const teste = erro+1 >= 6 ? palavra : ""
 
             if (condicao === false || teste === palavra) {
-
+                console.log("string vazia")
                 if ( count === 0) {
-                    //console.log("string vazia")
+                    
                     //console.log(count)
-                } else if (erro === 6) {
+                } else if (erro+1 === 6) {
                     //console.log("aqui")
                     setStatus("erro")
                     setHabilita(true);
