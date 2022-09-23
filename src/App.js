@@ -45,7 +45,7 @@ export default function App() {
             const x = count + 1
             setReset(x)
             setStatus("")
-            
+            setErro(1);
             //const interval = setInterval(fimDeJogo, 2000)
             //if (erro >= 6 || status === "fim") {
                 //clearInterval(interval)
@@ -63,7 +63,7 @@ export default function App() {
             const oculto = arrayOculto.map((item) => item + " ");
             setOculto(oculto)
             setTecla([]);
-            setErro(1)
+            setErro(1);
             
             setStatus("")
 
