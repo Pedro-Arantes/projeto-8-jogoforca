@@ -9,81 +9,202 @@ export default function App() {
 
     const [valor, setValor] = React.useState("inicio");
     const [palavra, setPalavra] = React.useState("");
+    const [palavraOculta, setOculto] = React.useState([]);
     const [habilita, setHabilita] = React.useState(true);
-    const [id, setId] = React.useState("btnGrey");
+    const [status, setStatus] = React.useState("");
+
     const [teclas, setTecla] = React.useState([]);
     const [count, setReset] = React.useState(0);
-
-
+    const [erro, setErro] = React.useState(1);
+    const [chute, setChute] = React.useState("");
     
+
+
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
-    const RandomWord = ()=>{
-        const eInicio = valor === "inicio" ? true : false;
+    const RandomWord = () => {
+        //const eInicio = valor === "inicio" ? true : false;
         const NumPalavras = palavras.length;
-
-        if (count%2 === 0) {
+        setChute("")
+        if (count % 2 === 0) {
             setValor("jogando");
             const num = getRandomInt(NumPalavras);
             const newWord = palavras[num];
             setPalavra(newWord);
             setHabilita(false);
-            const x = count+1
+            const newArray = Array.from(newWord)
+            const arrayOculto = transfUnderl(newArray)
+            const oculto = arrayOculto.map((item) => item + " ");
+            //const regular = /,/gi;
+            //oculto = oculto.replace(regular,"")
+            console.log(newArray)
+            console.log(oculto)
+            setOculto(oculto)
+            const x = count + 1
             setReset(x)
-        }else{
+            setStatus("")
+            
+            //const interval = setInterval(fimDeJogo, 2000)
+            //if (erro >= 6 || status === "fim") {
+                //clearInterval(interval)
+           // }
+
+        } else {
             setValor("jogando");
             const num = getRandomInt(NumPalavras);
             const newWord = palavras[num];
             setPalavra(newWord);
             setHabilita(false);
+
+            const newArray = Array.from(newWord)
+            const arrayOculto = transfUnderl(newArray)
+            const oculto = arrayOculto.map((item) => item + " ");
+            setOculto(oculto)
             setTecla([]);
+            setErro(1)
+            
+            setStatus("")
+
+
 
         }
-            
 
-            //setId("")
-            //console.log(palavra);
-            //console.log(newWord);
-           
-        
+
+        //setId("")
+        //console.log(palavra);
+        //console.log(newWord);
+
+
     }
 
-    const testLetter= (i)=>{
-        
-        if (valor === "jogando") {
-            
+    const transfUnderl = (array) => {
+        const arr = [];
+        for (let index = 0; index < array.length; index++) {
+            arr.push("_");
+
+
+        }
+        return arr;
+    }
+
+
+
+    const clickLetter = (i) => {
+
+        if (valor === "jogando" && status !== "fim" && status !== "erro") {
+
             const status = habilita === false ? true : false;
             const letter = alfabeto[i]
-            const arr = [...teclas,i]
-        
-        if (teclas.includes(i)) {
-            
-            
-        }else{
-            setTecla(arr);
+            const arr = [...teclas, i]
+            console.log(letter)
+            testLetter(letter);
+
+            const string = palavraOculta.toString()
+            const condicao = string.includes("_")
+            console.log(erro)
+            const teste = erro >= 6 ? palavra : ""
+
+            if (condicao === false || teste === palavra) {
+
+                if ( count === 0) {
+                    console.log("string vazia")
+                    console.log(count)
+                } else if (erro === 6) {
+                    console.log("aqui")
+                    setStatus("erro")
+                } else {
+                    console.log("estou")
+                    //setTecla([]);
+                    //setErro(0);
+                    setStatus("fim")
+                }
+
+            }
+
+            if (teclas.includes(i)) {
+
+
+            } else {
+                setTecla(arr);
+            }
+        } else {
+            alert("clique em escolher palavra para iniciar novo jogo");
         }
-        }
-        
-        
-        
-        
+
+
+
+
         //console.log(x.target);
-        
-        
+
+
     }
 
+    const testLetter = (letter) => {
+
+        const newArray = Array.from(palavra.normalize("NFD").replace(/[^a-zA-Z\s]/g, ""))
+        console.log(newArray)
+        const index = findLetter(newArray, letter)
+        if (index.length === 0) {
+            //let error = erro;
+            
+            const erros= erro +1
+            setErro(erros)
+            console.log(erros);
+        } else {
+            const oculto = palavraOculta
+            for (let i = 0; i < index.length; i++) {
+                const element = index[i];
+                oculto.splice(element, 1, palavra[element])
+
+            }
+            setOculto(oculto)
+        }
+
+    }
+
+    const findLetter = (array, letter) => {
+
+        const indexArray = []
+        for (let index = 0; index < array.length; index++) {
+
+            const element = array[index];
+
+            if (element === letter) {
+                indexArray.push(index)
+            }
+
+        }
+        return indexArray;
+    }
+
+    const setarChute = (event) => setChute(event.target.value)
+
+    const verificaChute = () => {
+        console.log(palavra)
+        console.log(chute)
+
+        if (palavra.normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === chute.normalize("NFD").replace(/[^a-zA-Z\s]/g, "")) {
+            setStatus("fim")
+            setHabilita(true)
+        }else{
+            setStatus("erro")
+            setHabilita(true)
+        }
+    }
     
 
-    
-    
+
+
+
+
     return (
 
         <main>
-            <Jogo RandomWord = {RandomWord} palavra = {palavra}/>
-            <Letras   arrayTeclas = {teclas} testLetter={testLetter} id= {id}habilita= {habilita} array ={alfabeto}/>
-            <Chute habilita= {habilita}/>
+            <Jogo valor={status} erro={erro} RandomWord={RandomWord} word={palavra} palavra={palavraOculta} />
+            <Letras arrayTeclas={teclas} clickLetter={clickLetter} habilita={habilita} array={alfabeto.map((item) => item.toUpperCase())} />
+            <Chute  inputValue= {chute} verChute={verificaChute} chute = {setarChute} habilita={habilita} />
         </main>
     )
 }

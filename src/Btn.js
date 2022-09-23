@@ -1,11 +1,11 @@
 
 
-export default function Btn({txt,id,testLetter,index,teclas,habilita}){
+export default function Btn({txt,clickLetter,index,teclas,habilita,status}){
     //console.log(teclas[index])
     //console.log(index)
     const  indexa = teclas[index]
     return(
         
-        <button onClick={()=>testLetter(index)} id={ teclas.includes(index) || habilita ? "btnGrey" : ""}>{txt}</button>
+        <button disabled = {status === "fim " || status === "erro"? true: false} onClick={()=>clickLetter(index)} id={ teclas.includes(index) || habilita ? "btnGrey" : ""}>{txt}</button>
     )
 }

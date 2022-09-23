@@ -109,3 +109,10 @@ main{
     background-color: rgb(160, 170, 183);
     border-style: none;
 }
+
+.tituloForcaErro{
+    color: red;
+}
+.tituloForcaAcerto{
+    color: green;
+}
