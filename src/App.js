@@ -187,7 +187,7 @@ export default function App() {
         console.log(palavra)
         console.log(chute)
 
-        if (palavra.normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === chute.normalize("NFD").replace(/[^a-zA-Z\s]/g, "")) {
+        if (palavra.normalize("NFD").replace(/[^a-zA-Z\s]/g, "") === chute.toLowerCase().normalize("NFD").replace(/[^a-zA-Z\s]/g, "")) {
             setStatus("fim")
             setHabilita(true)
         }else{
