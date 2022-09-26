@@ -46,10 +46,10 @@ export default function Jogo({ RandomWord, palavra, erro, word, valor }) {
     
     return (
         <div className="boxForca">
-            <img src={srcSituation()} alt="nada" />
+            <img data-identifier='game-image'src={srcSituation()} alt="nada" />
             <div className="boxBtnEsc">
-                <button onClick={() => RandomWord()}>Escolher Palavra</button>
-                <h1 className={eFimDeJogo(valor)}>{erro+1 > 6 || valor === "fim" || valor === "erro" ? word : palavra}</h1>
+                <button data-identifier="choose-word" onClick={() => RandomWord()}>Escolher Palavra</button>
+                <h1 data-identifier='word'className={eFimDeJogo(valor)}>{erro+1 > 6 || valor === "fim" || valor === "erro" ? word : palavra}</h1>
             </div>
         </div>
     )
